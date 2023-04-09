@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
     @book = Book.new
   end
-  
+
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     book = Book.new(book_params)
@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   end
 
   def index
+    @books = Book.all
   end
 
   def show
@@ -21,11 +22,11 @@ class BooksController < ApplicationController
 
   def edit
   end
-  
+
    private
   # ストロングパラメータ
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
 end
